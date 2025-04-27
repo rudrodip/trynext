@@ -1,6 +1,5 @@
 import ThemeToggler from "@/components/theme/toggler";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { siteConfig } from "@/config/site.config";
 import { Github } from "lucide-react";
 
