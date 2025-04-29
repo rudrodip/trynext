@@ -126,13 +126,13 @@
 
 
 ::-moz-selection {
-  color: hsl(var(--background));
-  background: hsl(var(--foreground));
+  color: var(--background);
+  background: var(--foreground);
 }
 
 ::selection {
-  color: hsl(var(--background));
-  background: hsl(var(--foreground));
+  color: var(--background);
+  background: var(--foreground);
 }
 
 /* tailwind styles */
