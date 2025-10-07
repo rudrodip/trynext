@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -11,42 +10,14 @@ type ThemeTogglerProps = {
 }
 
 export default function ThemeToggler({ className }: ThemeTogglerProps) {
-  const { theme, setTheme } = useTheme();
-  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setSystemTheme(mediaQuery.matches ? "dark" : "light");
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setSystemTheme(e.matches ? "dark" : "light");
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  const { resolvedTheme, setTheme } = useTheme();
 
   const switchTheme = () => {
-    switch (theme) {
-      case "light":
-        setTheme("dark");
-        break;
-      case "dark":
-        setTheme("light");
-        break;
-      case "system":
-        setTheme(systemTheme === "light" ? "dark" : "light");
-        break;
-      default:
-        break;
-    }
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   const toggleTheme = () => {
-    //@ts-ignore
     if (!document.startViewTransition) switchTheme();
-
-    //@ts-ignore
     document.startViewTransition(switchTheme);
   };
 
