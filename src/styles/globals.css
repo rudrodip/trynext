@@ -156,11 +156,13 @@
       
 ::view-transition-new(root) {
   animation-name: reveal-light;
+  animation-fill-mode: both;
 }
 
 ::view-transition-old(root),
 .dark::view-transition-old(root) {
   animation: none;
+  animation-fill-mode: both;
   z-index: -1;
 }
 .dark::view-transition-new(root) {
